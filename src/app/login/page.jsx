@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import {firebaseApp} from '../../firebase';
+import {app} from '../../firebase';
 import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
@@ -20,7 +20,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const auth = getAuth(firebaseApp);
+  const auth = getAuth(app);
   const router = useRouter();
 
   const handleLogin = async (e) => {
