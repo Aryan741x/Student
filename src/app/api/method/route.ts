@@ -1,12 +1,11 @@
 import { NextResponse,NextRequest } from 'next/server';
 import admin, { ServiceAccount } from 'firebase-admin';
 
-// Initialize Firebase Admin SDK (if not already initialized)
-import serviceAccount from '../student-3e4b3-firebase-adminsdk-fbsvc-5ccac73324.json'; 
-
 if (!admin.apps.length) {
+  const serviceAccount = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_SERVICE_ACCOUNT as string);
+
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount as ServiceAccount)
+      credential: admin.credential.cert(serviceAccount as ServiceAccount),
   });
 }
 
